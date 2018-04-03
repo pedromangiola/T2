@@ -1,0 +1,44 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Login', new_user_session_path, class: 'btn btn-primary login'%>
+<%= link_to 'Cerrar sesión', destroy_user_session_path, class: 'btn', method: :delete%>
+
+<h1 class="text-center">NOTICIAS AL MINUTO</h1>
+
+<hr />
+
+<div class="row">
+
+<% @entries.each do |entry| %>
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="text-center"><%= entry.Titulo %></h2>
+      </div>
+      <div class="panel-body">
+        <p class="text-center"><strong><em><%= entry.Bajada %></em></strong></p>
+        <p><%= truncate(entry.Cuerpo, length: 500, separator: ' ') %><small><%= link_to 'Ver más', entry , class:"btn btn-link"%></small></p>
+      </div>
+      <div class="panel-footer">
+        <p><%= entry.comments.count %><%=' comentarios'%></p>
+        <p><small><%= entry.created_at %></small></p>
+        <% if current_user != nil %>
+          <td><%= link_to 'Editar', edit_entry_path(entry) %></td>
+          <td><%= link_to 'Borrar', entry,class:"btn btn-lg btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<br>
+<% if current_user != nil %>
+  <%= link_to 'Crear noticia', new_entry_path, class: 'btn btn-primary'%>
+<% end%>
+<br>
+<br>
+<br>
+<br>
+</div>

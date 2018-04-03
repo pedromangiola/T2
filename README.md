@@ -8,4 +8,4 @@ https://github.com/voormedia/rails-erd
 
 Para el manejo de administrador se utilizó la gema devise, con base en la siguiente información https://github.com/plataformatec/devise
 
-
+Para hacer hacer la API, se utilizó información de la siguiente fuente: http://railscasts.com/episodes/350-rest-api-versioning?autoplay=true
